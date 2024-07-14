@@ -1,0 +1,89 @@
+{% extends "index/base.html" %}
+
+{% block title %}Edit Products{% endblock title %}
+
+{% block content %}
+<div class="col-md-12">
+    <h4>Edit</h4>
+    <form method="POST" class="post-form" action="/api/update-product/{{product.id}}">
+        {% csrf_token %}
+        <div class="container">
+            <br>
+            <div class="form-group row">
+                <label class="col-sm-1 col-form-label"></label>
+                <div class="col-sm-4">
+                    <h3>Update Details</h3>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">brand:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" name="brand" id="brand" required maxlength="20"
+                        value="{{ product.brand }}" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">model:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" name="model" id="model" required maxlength="100"
+                        value="{{ product.model }}" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">category</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" name="category" id="category" required maxlength="254"
+                        value="{{ product.category }}" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">weight:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" name="weight" id="weight" required maxlength="15"
+                        value="{{ product.weight }}" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">height</label>
+                <div class="col-sm-4">
+                    <input type="number" class="form-control" name="height" id="height" required maxlength="254"
+                        value="{{ product.height }}" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">altitude</label>
+                <div class="col-sm-4">
+                    <input type="number" class="form-control" name="altitude" id="altitude" required maxlength="254"
+                        value="{{ product.altitude }}" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">endurance</label>
+                <div class="col-sm-4">
+                    <input type="number" class="form-control" name="endurance" id="endurance" required maxlength="254"
+                        value="{{ product.endurance }}" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">wingspan</label>
+                <div class="col-sm-4">
+                    <input type="number" class="form-control" name="wingspan" id="wingspan" required maxlength="254"
+                        value="{{ product.wingspan }}" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">payload</label>
+                <div class="col-sm-4">
+                    <input type="number" class="form-control" name="payload" id="payload" required maxlength="254"
+                        value="{{ product.payload }}" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-1 col-form-label"></label>
+                <div class="col-sm-4">
+                    <button type="submit" class="btn btn-success btn-lg">Update</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    {% endblock content %}

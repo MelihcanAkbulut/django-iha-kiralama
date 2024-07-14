@@ -1,0 +1,54 @@
+{% extends "index/base.html" %}
+
+{% block title %}Edit Products{% endblock title %}
+
+{% block content %}
+<div class="col-md-12">
+    <h4>Edit</h4>
+    <form method="POST" class="post-form" action="/api/update-rent/{{rents.id}}">
+        {% csrf_token %}
+        <div class="container">
+            <br>
+            <div class="form-group row">
+                <label class="col-sm-1 col-form-label"></label>
+                <div class="col-sm-4">
+                    <h3>Update Details</h3>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">user:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" name="username" id="username" required maxlength="254"
+                        value="{{ rents.user.username }}" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">brand:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" name="brand" id="brand" required maxlength="254"
+                        value="{{ rents.product.brand }}" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">start date YYYY-mm-dd hh:mm:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" name="startDate" id="startDate" required maxlength="254"
+                        value="{{ rents.startDate }}" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">end date YYYY-mm-dd hh:mm:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" name="endDate" id="endDate" required maxlength="254"
+                        value="{{ rents.endDate }}" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-1 col-form-label"></label>
+                <div class="col-sm-4">
+                    <button type="submit" class="btn btn-success btn-lg">Update</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    {% endblock content %}

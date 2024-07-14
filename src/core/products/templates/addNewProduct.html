@@ -1,0 +1,92 @@
+{% extends 'index/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <body>
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Update User</h4>
+                </div>
+                <form id="updateUser" action="">
+                <div class="modal-body">
+                    <input class="form-control" id="form-id" type="hidden" name="brand"/>
+                    <label for="name">brand</label>
+                    <input class="form-control" id="form-name" type="text" name="model"/>
+                    <label for="address">model</label>
+                    <input class="form-control" id="form-address" type="text" name="category"/>
+                    <label for="age">category</label>
+                    <input class="form-control" id="form-id" type="hidden" name="weight"/>
+                    <label for="name">weight</label>
+                    <input class="form-control" id="form-name" type="text" name="height"/>
+                    <label for="address">height</label>
+                    <input class="form-control" id="form-address" type="text" name="altitude"/>
+                    <label for="age">altitude</label>
+                    <input class="form-control" id="form-id" type="hidden" name="endurance"/>
+                    <label for="name">endurance</label>
+                    <input class="form-control" id="form-name" type="text" name="wingspan"/>
+                    <label for="address">wingspan</label>
+                    <input class="form-control" id="form-address" type="text" name="payload"/>
+                    <label for="age">payload</label>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" >Save changes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+{% endblock %}
+
+{% block javascript %}
+
+<script>
+// Create Django Ajax Call
+$("form#updateUser").submit(function() {
+    var brand = $('input[name="brand"]').val().trim();
+    var model = $('input[name="model"]').val().trim();
+    var category = $('input[name="category"]').val().trim();
+    var weight = $('input[name="weight"]').val().trim();
+    var height = $('input[name="height"]').val().trim();
+    var altitude = $('input[name="altitude"]').val().trim();
+    var endurance = $('input[name="endurance"]').val().trim();
+    var wingspan = $('input[name="wingspan"]').val().trim();
+    var payload = $('input[name="payload"]').val().trim();
+    if (brand && model && category) {
+        // Create Ajax Call
+        $.ajax({
+            type: 'POST',
+            url: '/api/v1/products/',
+            data: {
+                    "brand":brand,
+                    "model": model,
+                    "category": category,
+                    "weight": weight,
+                    "height": height,
+                    "altitude": altitude,
+                    "endurance": endurance,
+                    "wingspan":wingspan,
+                    "payload": payload
+                },
+            dataType: 'json',
+            success: function(data) {
+                        alert('Adding successful!');
+                    }
+
+        });
+
+    } else {
+        alert("All fields must have a valid value.");
+    }
+});
+
+</script>
+
+{% endblock javascript %}
